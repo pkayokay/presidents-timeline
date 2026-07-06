@@ -1,0 +1,85 @@
+.app {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.masthead {
+  text-align: center;
+  padding: 42px 20px 6px;
+}
+.masthead__ornament {
+  color: var(--gold);
+  letter-spacing: 8px;
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+}
+.masthead__title {
+  font-size: clamp(2rem, 6vw, 3.6rem);
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  color: var(--ink);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+.masthead__subtitle {
+  margin-top: 8px;
+  font-size: clamp(0.9rem, 2.2vw, 1.15rem);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--sepia);
+}
+.masthead__rule {
+  width: min(560px, 82%);
+  height: 2px;
+  margin: 18px auto 14px;
+  background: linear-gradient(
+    to right,
+    rgba(122, 92, 52, 0),
+    var(--sepia) 20%,
+    var(--gold) 50%,
+    var(--sepia) 80%,
+    rgba(122, 92, 52, 0)
+  );
+  position: relative;
+}
+.masthead__rule::after {
+  content: '★';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  color: var(--gold);
+  background: var(--parchment);
+  padding: 0 12px;
+  font-size: 0.9rem;
+}
+.masthead__hint {
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: 1.02rem;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.stage {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  padding: 10px 0 20px;
+  min-height: 0;
+}
+
+.colophon {
+  text-align: center;
+  padding: 14px 20px 26px;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  color: var(--sepia);
+  font-variant-numeric: oldstyle-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+  }
+}

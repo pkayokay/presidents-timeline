@@ -1,0 +1,117 @@
+.pres-card {
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+  width: 232px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+  /* skip layout/paint for cards scrolled off-screen; the intrinsic size keeps
+     the scroll track stable so fast scrolling stays smooth */
+  content-visibility: auto;
+  contain-intrinsic-size: 232px 360px;
+}
+
+.pres-card__inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 22px 16px 18px;
+  border-radius: 6px;
+  background:
+    linear-gradient(160deg, rgba(255, 253, 245, 0.6), rgba(214, 190, 148, 0.35)),
+    var(--parchment-deep);
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.4) inset,
+    0 14px 26px -14px rgba(47, 36, 19, 0.55);
+  border: 1px solid rgba(122, 92, 52, 0.35);
+}
+
+.pres-card__ordinal {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--gold-bright), var(--sepia));
+  color: #2a1e0d;
+  font-family: var(--serif-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-shadow: 0 3px 8px -2px rgba(47, 36, 19, 0.6), 0 0 0 2px var(--parchment-deep);
+}
+
+.pres-card__frame {
+  position: relative;
+  width: 168px;
+  height: 200px;
+  padding: 8px;
+  border-radius: 3px;
+  background:
+    linear-gradient(135deg, var(--gold-bright), var(--sepia) 55%, var(--gold-bright));
+  box-shadow:
+    0 0 0 2px rgba(47, 36, 19, 0.55),
+    0 10px 20px -10px rgba(47, 36, 19, 0.7);
+}
+
+.pres-card__frame::after {
+  /* inner beveled matte line */
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(47, 36, 19, 0.4);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.pres-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 22%;
+  border-radius: 2px;
+  filter: sepia(0.32) contrast(1.02) brightness(0.99);
+  background: var(--parchment-edge);
+}
+
+.pres-card__plate {
+  margin-top: 16px;
+  text-align: center;
+  width: 100%;
+}
+
+.pres-card__name {
+  font-size: 1.12rem;
+  line-height: 1.15;
+  color: var(--ink);
+  letter-spacing: 0.2px;
+}
+
+.pres-card__years {
+  margin-top: 4px;
+  font-variant-numeric: oldstyle-nums;
+  font-size: 0.98rem;
+  color: var(--ink-soft);
+  letter-spacing: 1px;
+}
+
+.pres-card__party {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 2px 12px;
+  font-size: 0.72rem;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: #f6ecd8;
+  background: var(--accent);
+  border-radius: 2px;
+  box-shadow: 0 2px 5px -2px rgba(0, 0, 0, 0.5);
+}

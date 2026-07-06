@@ -1,0 +1,112 @@
+.timeline {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 8px;
+}
+
+.timeline-scroll {
+  flex: 1 1 auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x proximity;
+  padding: 34px 6vw 10px;
+  cursor: grab;
+  touch-action: pan-x;
+}
+.timeline-scroll:active {
+  cursor: grabbing;
+}
+
+.timeline__ribbon {
+  display: flex;
+  gap: 32px;
+  width: max-content;
+  padding-bottom: 6px;
+}
+
+/* faint era ruler beneath the ribbon */
+.timeline__rule {
+  display: flex;
+  gap: 32px;
+  width: max-content;
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 2px solid rgba(122, 92, 52, 0.4);
+  position: relative;
+}
+.timeline__rule::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: repeating-linear-gradient(
+    to right,
+    rgba(122, 92, 52, 0.4) 0 1px,
+    transparent 1px 40px
+  );
+}
+
+.timeline__tick {
+  flex: 0 0 auto;
+  width: 232px;
+  text-align: center;
+  position: relative;
+}
+.timeline__tick::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  width: 1px;
+  height: 10px;
+  background: var(--sepia);
+  transform: translateX(-50%);
+}
+.timeline__tick-year {
+  font-family: var(--serif-display);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  color: var(--sepia);
+  font-variant-numeric: oldstyle-nums;
+}
+
+.timeline__arrow {
+  flex: 0 0 auto;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--parchment);
+  background: radial-gradient(circle at 35% 30%, var(--sepia), var(--ink-soft));
+  border: 1px solid rgba(47, 36, 19, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 6px 14px -6px rgba(47, 36, 19, 0.8), 0 0 0 3px rgba(176, 141, 76, 0.35);
+  transition: transform 0.15s ease, filter 0.15s ease;
+  z-index: 2;
+}
+.timeline__arrow:hover {
+  transform: scale(1.07);
+  filter: brightness(1.08);
+}
+.timeline__arrow:active {
+  transform: scale(0.96);
+}
+
+@media (max-width: 640px) {
+  .timeline__arrow {
+    display: none;
+  }
+  .timeline-scroll {
+    padding-left: 18px;
+    padding-right: 18px;
+    scroll-snap-type: x mandatory;
+  }
+}
