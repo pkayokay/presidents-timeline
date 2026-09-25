@@ -10,8 +10,15 @@
   font-variant-numeric: lining-nums;
   color: inherit;
   -webkit-tap-highlight-color: transparent;
-  /* iOS won't start a scroll on a button unless the button allows the pan */
+  /* A press on the name or portrait should drag the ribbon, not select text
+     or drag the image. pan-y still lets a vertical swipe scroll the page. */
+  user-select: none;
+  -webkit-user-drag: none;
   touch-action: pan-x pan-y;
+}
+.pres-card * {
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .pres-card__inner {

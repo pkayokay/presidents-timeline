@@ -9,6 +9,9 @@ export default function PresidentCard({ president, onSelect }) {
       type="button"
       id={`pc-${president.number}`}
       className="pres-card"
+      data-president={president.number}
+      draggable={false}
+      onDragStart={(e) => e.preventDefault()}
       onClick={() => onSelect(president)}
       style={{ '--accent': accent }}
       whileHover={{ y: -8 }}
