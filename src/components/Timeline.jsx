@@ -25,14 +25,6 @@ export default function Timeline({ presidents, onSelect, selectedNumber }) {
     return () => window.removeEventListener('keydown', onKey)
   }, [scrollByCards, selectedNumber])
 
-  // keep the selected president's (hidden) source card centered so the
-  // shared-layout zoom morph originates and returns to a sensible spot
-  useEffect(() => {
-    if (selectedNumber == null) return
-    const el = document.getElementById(`pc-${selectedNumber}`)
-    el?.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' })
-  }, [selectedNumber])
-
   // translate vertical wheel into horizontal scroll for mouse users.
   // Coalesce deltas and apply once per animation frame so fast wheeling
   // doesn't thrash the main thread with a scroll write on every event.
@@ -121,7 +113,6 @@ export default function Timeline({ presidents, onSelect, selectedNumber }) {
               key={p.number}
               president={p}
               onSelect={onSelectGuarded}
-              hidden={selectedNumber === p.number}
             />
           ))}
         </div>

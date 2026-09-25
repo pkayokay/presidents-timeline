@@ -3,6 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { partyColor, termLabel } from '../party.js'
 import './PresidentDetail.css'
 
+// Framer runs opacity on the browser's animation thread and leaves the
+// element's style at the start value. When that animation ends, one frame
+// paints at opacity 0 before the final value is written — a visible flash.
+// onUpdate opts the element back onto the main thread, which updates the
+// style every frame.
+const keepOpacityOnMainThread = () => {}
+
 export default function PresidentDetail({ president, onClose, onPrev, onNext, hasPrev, hasNext }) {
   const accent = partyColor(president.party)
 
@@ -20,6 +27,7 @@ export default function PresidentDetail({ president, onClose, onPrev, onNext, ha
     <motion.div
       className="detail-backdrop"
       onClick={onClose}
+      onUpdate={keepOpacityOnMainThread}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -29,6 +37,7 @@ export default function PresidentDetail({ president, onClose, onPrev, onNext, ha
         className="detail-card"
         style={{ '--accent': accent }}
         onClick={(e) => e.stopPropagation()}
+        onUpdate={keepOpacityOnMainThread}
         initial={{ opacity: 0, scale: 0.96 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.96 }}
@@ -52,6 +61,7 @@ export default function PresidentDetail({ president, onClose, onPrev, onNext, ha
             <motion.div
               className="detail-body"
               key={president.number}
+              onUpdate={keepOpacityOnMainThread}
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -14 }}

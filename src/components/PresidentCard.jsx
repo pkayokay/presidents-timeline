@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { partyColor, termLabel } from '../party.js'
 import './PresidentCard.css'
 
-export default function PresidentCard({ president, onSelect, hidden }) {
+export default function PresidentCard({ president, onSelect }) {
   const accent = partyColor(president.party)
   return (
     <motion.button
@@ -10,9 +10,7 @@ export default function PresidentCard({ president, onSelect, hidden }) {
       id={`pc-${president.number}`}
       className="pres-card"
       onClick={() => onSelect(president)}
-      // hide the source card while its detail overlay is open so the shared
-      // layout element doesn't appear twice
-      style={{ visibility: hidden ? 'hidden' : 'visible', '--accent': accent }}
+      style={{ '--accent': accent }}
       whileHover={{ y: -8 }}
       whileTap={{ scale: 0.97 }}
       transition={{ type: 'spring', stiffness: 300, damping: 24 }}
