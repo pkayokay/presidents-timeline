@@ -10,10 +10,6 @@
   font-variant-numeric: lining-nums;
   color: inherit;
   -webkit-tap-highlight-color: transparent;
-  /* skip layout/paint for cards scrolled off-screen; the intrinsic size keeps
-     the scroll track stable so fast scrolling stays smooth */
-  content-visibility: auto;
-  contain-intrinsic-size: 232px 360px;
 }
 
 .pres-card__inner {
@@ -90,6 +86,8 @@
 }
 
 .pres-card__name {
+  /* two lines on every card, so a long name doesn't make that card taller */
+  min-height: calc(1.15em * 2);
   font-size: 1.12rem;
   line-height: 1.15;
   color: var(--ink);
@@ -103,13 +101,25 @@
   letter-spacing: 1px;
 }
 
+.pres-card__party-slot {
+  /* room for a party name that wraps, like Democratic-Republican */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 34px;
+  margin-top: 8px;
+}
+
 .pres-card__party {
   display: inline-block;
-  margin-top: 8px;
+  max-width: 100%;
   padding: 2px 12px;
   font-size: 0.72rem;
+  line-height: 1.25;
   letter-spacing: 1.4px;
   text-transform: uppercase;
+  text-align: center;
   color: #f6ecd8;
   background: var(--accent);
   border-radius: 2px;

@@ -32,7 +32,9 @@ export default function PresidentCard({ president, onSelect }) {
         <div className="pres-card__plate">
           <h3 className="pres-card__name">{president.name}</h3>
           <div className="pres-card__years">{termLabel(president)}</div>
-          <div className="pres-card__party">{president.party}</div>
+          <div className="pres-card__party-slot">
+            <div className="pres-card__party">{president.party}</div>
+          </div>
         </div>
       </div>
     </motion.button>
