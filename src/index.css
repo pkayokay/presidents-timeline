@@ -45,6 +45,9 @@ body {
      forces a full-viewport repaint on every scroll frame and tanks scroll perf. */
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  /* Both faces default to oldstyle figures, whose 3/4/5/7/9 look cut off.
+     Lining figures keep every digit the same height. */
+  font-variant-numeric: lining-nums;
 }
 
 h1,

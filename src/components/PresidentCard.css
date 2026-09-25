@@ -7,6 +7,7 @@
   background: none;
   cursor: pointer;
   font-family: inherit;
+  font-variant-numeric: lining-nums;
   color: inherit;
   -webkit-tap-highlight-color: transparent;
   /* skip layout/paint for cards scrolled off-screen; the intrinsic size keeps
@@ -97,7 +98,6 @@
 
 .pres-card__years {
   margin-top: 4px;
-  font-variant-numeric: oldstyle-nums;
   font-size: 0.98rem;
   color: var(--ink-soft);
   letter-spacing: 1px;

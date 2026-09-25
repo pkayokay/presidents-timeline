@@ -72,7 +72,6 @@
   font-size: 0.8rem;
   letter-spacing: 1px;
   color: var(--sepia);
-  font-variant-numeric: oldstyle-nums;
 }
 
 .timeline__arrow {

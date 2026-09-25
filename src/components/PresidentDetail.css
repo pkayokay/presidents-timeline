@@ -130,7 +130,6 @@
 .detail-facts dd {
   margin: 2px 0 0;
   font-size: 1.15rem;
-  font-variant-numeric: oldstyle-nums;
   color: var(--ink);
 }
 .detail-party {

@@ -75,7 +75,6 @@
   font-size: 0.85rem;
   letter-spacing: 1px;
   color: var(--sepia);
-  font-variant-numeric: oldstyle-nums;
 }
 
 @media (prefers-reduced-motion: reduce) {
