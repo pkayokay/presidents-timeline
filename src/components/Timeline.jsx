@@ -55,7 +55,16 @@ export default function Timeline({ presidents, onSelect, selectedNumber }) {
   // pointer drag-to-scroll (suppresses the click when actually dragged).
   // The scrollLeft write is batched into an animation frame so flinging the
   // ribbon quickly stays smooth.
-  const drag = useRef({ down: false, startX: 0, startLeft: 0, moved: false, target: 0, raf: 0 })
+  const drag = useRef({
+    down: false,
+    pointerType: 'mouse',
+    startX: 0,
+    startY: 0,
+    startLeft: 0,
+    moved: false,
+    target: 0,
+    raf: 0,
+  })
   const applyDrag = () => {
     const el = scrollRef.current
     drag.current.raf = 0
@@ -66,7 +75,9 @@ export default function Timeline({ presidents, onSelect, selectedNumber }) {
     if (!el) return
     drag.current = {
       down: true,
+      pointerType: e.pointerType,
       startX: e.clientX,
+      startY: e.clientY,
       startLeft: el.scrollLeft,
       moved: false,
       target: el.scrollLeft,
@@ -77,7 +88,11 @@ export default function Timeline({ presidents, onSelect, selectedNumber }) {
     const d = drag.current
     if (!d.down) return
     const dx = e.clientX - d.startX
-    if (Math.abs(dx) > 6) d.moved = true
+    const dy = e.clientY - d.startY
+    if (Math.hypot(dx, dy) > 6) d.moved = true
+    // Touch already pans the ribbon natively. Writing scrollLeft here steals
+    // a vertical swipe that should scroll the page.
+    if (d.pointerType !== 'mouse') return
     d.target = d.startLeft - dx
     if (!d.raf) d.raf = requestAnimationFrame(applyDrag)
   }
